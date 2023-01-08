@@ -24,16 +24,22 @@
         <input
           type="text"
           class="control_interval"
+          value="1000"
           placeholder="Type interval in ms"
         />
       </div>
       <div>
-        <input type="text" class="control_limit" placeholder="Type limit" />
+        <input
+          type="text"
+          class="control_limit"
+          value="5"
+          placeholder="Type limit"
+        />
       </div>
       <div>
         <button class="start" onClick="start()">Start</button>
-        <button class="stop">Stop</button>
-        <button class="reset">Reset</button>
+        <button class="stop" onClick="stop()">Stop</button>
+        <button class="reset" onClick="reset()">Reset</button>
       </div>
     </div>
     <!-- Script -->
