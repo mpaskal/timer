@@ -14,6 +14,8 @@
   </head>
   <body>
     <h1>Timer</h1>
+    <!-- SetTimeout -->
+    <h2>SetTimeout</h2>
     <div class="display">
       <div class="display_label">Display</div>
       <div class="display_text">0</div>
@@ -40,6 +42,36 @@
         <button class="start" onClick="start()">Start</button>
         <button class="stop" onClick="stop()">Stop</button>
         <button class="reset" onClick="reset()">Reset</button>
+      </div>
+    </div>
+
+    <!-- SetInterval -->
+    <h2>SetInterval</h2>
+    <div class="display">
+      <div class="display_label">Display</div>
+      <div class="display_textInterval">0</div>
+    </div>
+    <div class="control">
+      <div class="control_label">Control</div>
+      <div>
+        <input
+          type="text"
+          class="control_intervalInterval"
+          value="1000"
+          placeholder="Type interval in ms"
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          class="control_limitInterval"
+          placeholder="Type limit (optional)"
+        />
+      </div>
+      <div>
+        <button class="startInterval" onClick="startInterval()">Start</button>
+        <button class="stopInterval" onClick="stopInterval()">Stop</button>
+        <button class="resetInterval" onClick="resetInterval()">Reset</button>
       </div>
     </div>
     <!-- Script -->

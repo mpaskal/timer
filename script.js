@@ -2,10 +2,14 @@
 const interval = document.querySelector(".control_interval");
 const limit = document.querySelector(".control_limit");
 const displayCounter = document.querySelector(".display_text");
+const intervalInterval = document.querySelector(".control_intervalInterval");
+const limitInterval = document.querySelector(".control_limitInterval");
+let displayTimeInterval = document.querySelector(".display_textInterval");
 let count = true;
+let counterInterval = 1;
+let intervalId;
 
-// Listen event
-//document.addEventListener("click", start);
+// Set timeout
 
 // Display counter
 let displayNumber = (counter, limit) => {
@@ -50,4 +54,51 @@ function reset() {
   interval.value = 1000;
   limit.value = 5;
   displayCounter.textContent = 0;
+}
+
+// Set interval
+
+// Display counter
+let displayIntervalNumber = () => {
+  console.log("counter ", counterInterval);
+  displayTimeInterval.textContent = counterInterval;
+  if (limitInterval.value && counterInterval >= limitInterval.value) {
+    stopInterval();
+  } else {
+    counterInterval++;
+  }
+};
+
+// Start interval
+function startInterval() {
+  console.log("StartTimerInterval");
+  startTimerInterval(
+    displayIntervalNumber,
+    intervalInterval.value,
+    limitInterval.value
+  );
+}
+
+// Start timer
+function startTimerInterval(displayNumber, interval, limit) {
+  console.log("I'm here");
+  console.log("Interval ", interval);
+  intervalId = setInterval(displayNumber, interval);
+  console.log("intervalId ", intervalId);
+}
+
+// Stop interval
+function stopInterval() {
+  clearInterval(intervalId);
+  counterInterval = 1;
+}
+
+// Reset interval
+function resetInterval() {
+  intervalInterval.value = 1000;
+  counterInterval = 1;
+  displayTimeInterval.textContent = 0;
+  if (intervalId) {
+    clearInterval(intervalId);
+  }
 }
