@@ -59,14 +59,14 @@ function reset() {
 // Display counter
 let displayIntervalNumber = (counter, limit) => {
   if (limitInterval.value) {
-    if (counter <= limit) {
+    if (counter <= limit && intervalId) {
       console.log("counter ", counter);
       displayTimeInterval.textContent = counter;
       return true;
     } else {
       return false;
     }
-  } else {
+  } else if (intervalId) {
     console.log("counter ", counter);
     displayTimeInterval.textContent = counter;
     return true;
@@ -101,13 +101,11 @@ function startTimerInterval(displayNumber, interval, limit) {
 // Stop interval
 function stopInterval() {
   clearInterval(intervalId);
-  counterInterval = 1;
 }
 
 // Reset interval
 function resetInterval() {
   intervalInterval.value = 1000;
-  counterInterval = 1;
   displayTimeInterval.textContent = 0;
   if (intervalId) {
     clearInterval(intervalId);
