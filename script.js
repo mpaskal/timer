@@ -6,7 +6,6 @@ const intervalInterval = document.querySelector(".control_intervalInterval");
 const limitInterval = document.querySelector(".control_limitInterval");
 let displayTimeInterval = document.querySelector(".display_textInterval");
 let count = true;
-let counterInterval = 1;
 let intervalId;
 
 // Set timeout
@@ -57,15 +56,20 @@ function reset() {
 }
 
 // Set interval
-
 // Display counter
-let displayIntervalNumber = () => {
-  console.log("counter ", counterInterval);
-  displayTimeInterval.textContent = counterInterval;
-  if (limitInterval.value && counterInterval >= limitInterval.value) {
-    stopInterval();
+let displayIntervalNumber = (counter, limit) => {
+  if (limitInterval.value) {
+    if (counter <= limit) {
+      console.log("counter ", counter);
+      displayTimeInterval.textContent = counter;
+      return true;
+    } else {
+      return false;
+    }
   } else {
-    counterInterval++;
+    console.log("counter ", counter);
+    displayTimeInterval.textContent = counter;
+    return true;
   }
 };
 
@@ -81,9 +85,16 @@ function startInterval() {
 
 // Start timer
 function startTimerInterval(displayNumber, interval, limit) {
-  console.log("I'm here");
-  console.log("Interval ", interval);
-  intervalId = setInterval(displayNumber, interval);
+  let counter = 1;
+  limit = limit;
+  interval = interval;
+  displayNumber = displayNumber;
+  function checkInterval() {
+    if (!displayNumber(counter++, limit)) {
+      stopInterval();
+    }
+  }
+  intervalId = setInterval(checkInterval, interval);
   console.log("intervalId ", intervalId);
 }
 
